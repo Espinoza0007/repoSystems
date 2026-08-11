@@ -1,0 +1,30 @@
+services:
+  systempos-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: systempos-db
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_SA_PASSWORD: "${SYSTEMPOS_SA_PASSWORD:?Set SYSTEMPOS_SA_PASSWORD before starting Docker Compose}"
+    ports:
+      - "1433:1433"
+    volumes:
+      - systempos_sql_data:/var/opt/mssql
+    restart: unless-stopped
+
+  systempos-api:
+    build:
+      context: .
+      dockerfile: src/SystemPOS.Api/Dockerfile
+    container_name: systempos-api
+    depends_on:
+      - systempos-db
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__SystemPOS: "Server=systempos-db,1433;Database=SystemPOS;User Id=sa;Password=${SYSTEMPOS_SA_PASSWORD};Encrypt=True;TrustServerCertificate=True;"
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+volumes:
+  systempos_sql_data:
