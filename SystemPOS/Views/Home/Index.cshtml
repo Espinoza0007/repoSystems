@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["Subtitle"] = "Resumen general de tu negocio";
+}
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <span class="stat-icon">📦</span>
+        <div><strong>@ViewBag.ProductCount</strong><span>Productos activos</span></div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">👥</span>
+        <div><strong>@ViewBag.UserCount</strong><span>Usuarios activos</span></div>
+    </div>
+    <div class="stat-card warning">
+        <span class="stat-icon">⚠️</span>
+        <div><strong>@ViewBag.LowStockCount</strong><span>Stock bajo</span></div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">💵</span>
+        <div><strong>$0.00</strong><span>Ventas de hoy</span></div>
+    </div>
+</div>
+
+<div class="content-grid">
+    <div class="panel">
+        <div class="panel-header"><h2>Accesos rápidos</h2></div>
+        <div class="quick-actions">
+            <a asp-controller="Products" asp-action="Index" class="quick-action">📦 <span>Ver productos</span></a>
+            @if (User.IsInRole("Administrator"))
+            {
+                <a asp-controller="Products" asp-action="Create" class="quick-action">➕ <span>Nuevo producto</span></a>
+                <a asp-controller="Users" asp-action="Index" class="quick-action">👥 <span>Administrar usuarios</span></a>
+            }
+            <div class="quick-action muted">🧾 <span>POS próximamente</span></div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-header"><h2>Estado del sistema</h2></div>
+        <div class="system-status">
+            <span class="status-dot"></span>
+            <div><strong>SystemPOS operativo</strong><p>MVC, Identity y SQL Server inicializados.</p></div>
+        </div>
+    </div>
+</div>
