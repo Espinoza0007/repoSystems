@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SystemPOS</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-mark">SP</div>
+                <div>
+                    <strong>SystemPOS</strong>
+                    <span>Gestión comercial</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a asp-controller="Home" asp-action="Index">📊 <span>Dashboard</span></a>
+                <a asp-controller="Products" asp-action="Index">📦 <span>Productos</span></a>
+                @if (User.IsInRole("Administrator"))
+                {
+                    <a asp-controller="Users" asp-action="Index">👥 <span>Usuarios</span></a>
+                }
+                <a href="#" class="disabled">🧾 <span>Ventas</span></a>
+                <a href="#" class="disabled">🏪 <span>Caja</span></a>
+                <a href="#" class="disabled">📈 <span>Reportes</span></a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="signed-user">
+                    <span>@User.Identity?.Name</span>
+                </div>
+                <form asp-controller="Account" asp-action="Logout" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="logout-button">Cerrar sesión</button>
+                </form>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>@ViewData["Title"]</h1>
+                    <p>@ViewData["Subtitle"]</p>
+                </div>
+            </header>
+
+            @if (TempData["Success"] is string success)
+            {
+                <div class="alert success">@success</div>
+            }
+
+            <section class="page-content">
+                @RenderBody()
+            </section>
+        </main>
+    </div>
+}
+else
+{
+    @RenderBody()
+}
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
