@@ -1,0 +1,11 @@
+[
+  {
+    "Name": "SystemPOS API",
+    "Projects": [
+      {
+        "Path": "src\\SystemPOS.Api\\SystemPOS.Api.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
