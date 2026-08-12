@@ -1,0 +1,40 @@
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Productos";
+    ViewData["Subtitle"] = "Catálogo, precios y existencias";
+}
+
+<div class="toolbar">
+    <form method="get" class="search-form">
+        <input name="search" value="@ViewBag.Search" class="input" placeholder="Buscar por nombre o código de barras" />
+        <button class="secondary-button" type="submit">Buscar</button>
+    </form>
+    @if (User.IsInRole("Administrator"))
+    {
+        <a asp-action="Create" class="primary-button">+ Nuevo producto</a>
+    }
+</div>
+
+<div class="panel table-panel">
+    <table class="data-table">
+        <thead><tr><th>Producto</th><th>Código</th><th>Precio</th><th>Stock</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><strong>@item.Name</strong></td>
+                <td>@(item.Barcode ?? "-")</td>
+                <td>$@item.Price.ToString("N2")</td>
+                <td><span class="@(item.Stock <= 5 ? "low-stock" : "")">@item.Stock.ToString("N3")</span></td>
+                <td><span class="status-badge @(item.IsActive ? "active" : "inactive")">@(item.IsActive ? "Activo" : "Inactivo")</span></td>
+                <td class="actions-cell">
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="link-button">Editar</a>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
