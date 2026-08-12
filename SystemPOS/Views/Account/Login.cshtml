@@ -1,4 +1,5 @@
 @model LoginViewModel
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Environment
 @{
     ViewData["Title"] = "Iniciar sesión";
     Layout = "_Layout";
@@ -15,7 +16,7 @@
             <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
 
             <label asp-for="Email"></label>
-            <input asp-for="Email" class="input" placeholder="admin@systempos.local" autofocus />
+            <input asp-for="Email" class="input" placeholder="correo@empresa.com" autofocus />
             <span asp-validation-for="Email" class="field-error"></span>
 
             <label asp-for="Password">Contraseña</label>
@@ -29,9 +30,12 @@
             <button type="submit" class="primary-button full">Ingresar</button>
         </form>
 
-        <div class="demo-credentials">
-            <strong>Acceso local inicial</strong>
-            <span>admin@systempos.local / Admin123!</span>
-        </div>
+        @if (Environment.EnvironmentName == "Development")
+        {
+            <div class="demo-credentials">
+                <strong>Acceso local inicial</strong>
+                <span>admin@systempos.local / Admin123!</span>
+            </div>
+        }
     </div>
 </div>
