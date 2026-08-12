@@ -12,16 +12,16 @@ services:
       - systempos_sql_data:/var/opt/mssql
     restart: unless-stopped
 
-  systempos-api:
+  systempos-web:
     build:
       context: .
-      dockerfile: src/SystemPOS.Api/Dockerfile
-    container_name: systempos-api
+      dockerfile: Dockerfile
+    container_name: systempos-web
     depends_on:
       - systempos-db
     environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
-      ConnectionStrings__SystemPOS: "Server=systempos-db,1433;Database=SystemPOS;User Id=sa;Password=${SYSTEMPOS_SA_PASSWORD};Encrypt=True;TrustServerCertificate=True;"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      ConnectionStrings__DefaultConnection: "Server=systempos-db,1433;Database=SystemPOS;User Id=sa;Password=${SYSTEMPOS_SA_PASSWORD};Encrypt=True;TrustServerCertificate=True;"
     ports:
       - "8080:8080"
     restart: unless-stopped
