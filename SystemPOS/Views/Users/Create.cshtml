@@ -1,0 +1,41 @@
+@model UserCreateViewModel
+@{
+    ViewData["Title"] = "Nuevo usuario";
+    ViewData["Subtitle"] = "Crea un acceso para administrador o cajero";
+}
+
+<div class="panel form-panel">
+    <form asp-action="Create" method="post" class="form-grid">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="validation-summary full-column"></div>
+
+        <div>
+            <label asp-for="FullName"></label>
+            <input asp-for="FullName" class="input" />
+            <span asp-validation-for="FullName" class="field-error"></span>
+        </div>
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="input" />
+            <span asp-validation-for="Email" class="field-error"></span>
+        </div>
+        <div>
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="input" />
+            <span asp-validation-for="Password" class="field-error"></span>
+        </div>
+        <div>
+            <label asp-for="Role"></label>
+            <select asp-for="Role" class="input">
+                <option value="Cashier">Cajero</option>
+                <option value="Administrator">Administrador</option>
+            </select>
+            <span asp-validation-for="Role" class="field-error"></span>
+        </div>
+
+        <div class="form-actions full-column">
+            <a asp-action="Index" class="secondary-button">Cancelar</a>
+            <button type="submit" class="primary-button">Guardar usuario</button>
+        </div>
+    </form>
+</div>
