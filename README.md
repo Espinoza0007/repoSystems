@@ -1,59 +1,31 @@
-# SystemPOS
+# repoSystems
 
-SystemPOS is the first commercial product in `repoSystems`: a modular point-of-sale and inventory platform for micro and small businesses, starting with minimarkets.
+Repositorio maestro para productos de software comercial orientados a micro y pequeñas empresas.
 
-## Product direction
-
-The MVP focuses on a workflow that can be demonstrated and sold quickly:
-
-1. Company and branch setup
-2. Product catalog
-3. Inventory by branch
-4. Sales / POS transactions
-5. Automatic inventory movements
-6. Daily sales reporting
-
-The architecture is multi-company from the beginning so future vertical modules (food service, barber shops, services, billing) can reuse the same core.
-
-## Technology
-
-- ASP.NET Core / .NET 10
-- Entity Framework Core
-- SQL Server
-- REST API
-- Docker
-
-## Repository structure
+## Productos
 
 ```text
-src/
-  SystemPOS.Domain/
-  SystemPOS.Application/
-  SystemPOS.Infrastructure/
-  SystemPOS.Api/
-database/
-  001_initial_schema.sql
-docker-compose.yml
+repoSystems/
+├── SystemPOS/
+├── SystemBarber/
+└── SystemRestaurant/
 ```
 
-## MVP status
+### SystemPOS
+Punto de venta e inventario para minimarkets, tiendas y pequeños comercios. Es el producto activo y prioritario.
 
-- [x] Initial repository structure
-- [x] Core domain model
-- [x] SQL Server initial schema
-- [ ] Product CRUD
-- [ ] Inventory operations
-- [ ] POS sale transaction
-- [ ] Authentication and roles
-- [ ] Angular frontend
-- [ ] Docker end-to-end validation
+### SystemBarber
+Sistema para barberías y salones. Reservado para una fase posterior, reutilizando componentes y aprendizajes de SystemPOS.
 
-## Local database
+### SystemRestaurant
+Sistema para comedores, cafeterías y restaurantes pequeños. Reservado para una fase posterior.
 
-The repository includes `database/001_initial_schema.sql` and a Docker Compose definition for SQL Server.
+## Estrategia
 
-> Do not use the example development password in production. Configure secrets through environment variables or a secret manager.
+Cada producto vive dentro de su propia carpeta y puede tener su propio backend, frontend, base de datos, Docker y documentación. Los componentes que realmente sean reutilizables podrán extraerse posteriormente a librerías compartidas, evitando acoplar los productos antes de validar el mercado.
 
-## Commercial objective
+## Estado
 
-Build one reusable platform and activate business-specific modules instead of maintaining separate products for each type of microenterprise.
+- SystemPOS: en desarrollo
+- SystemBarber: planificado
+- SystemRestaurant: planificado
