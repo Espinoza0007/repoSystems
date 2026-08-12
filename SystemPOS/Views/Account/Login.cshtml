@@ -1,0 +1,37 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Iniciar sesión";
+    Layout = "_Layout";
+}
+
+<div class="login-page">
+    <div class="login-card">
+        <div class="login-brand">SP</div>
+        <h1>SystemPOS</h1>
+        <p>Ingresa a la administración de tu negocio.</p>
+
+        <form asp-action="Login" method="post" class="form-stack">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="input" placeholder="admin@systempos.local" autofocus />
+            <span asp-validation-for="Email" class="field-error"></span>
+
+            <label asp-for="Password">Contraseña</label>
+            <input asp-for="Password" class="input" placeholder="••••••••" />
+            <span asp-validation-for="Password" class="field-error"></span>
+
+            <label class="checkbox-row">
+                <input asp-for="RememberMe" /> Recordarme
+            </label>
+
+            <button type="submit" class="primary-button full">Ingresar</button>
+        </form>
+
+        <div class="demo-credentials">
+            <strong>Acceso local inicial</strong>
+            <span>admin@systempos.local / Admin123!</span>
+        </div>
+    </div>
+</div>
