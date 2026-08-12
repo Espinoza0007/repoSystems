@@ -1,0 +1,36 @@
+@model IEnumerable<UserListItemViewModel>
+@{
+    ViewData["Title"] = "Usuarios";
+    ViewData["Subtitle"] = "Administración de accesos y roles";
+}
+
+<div class="toolbar">
+    <div></div>
+    <a asp-action="Create" class="primary-button">+ Nuevo usuario</a>
+</div>
+
+<div class="panel table-panel">
+    <table class="data-table">
+        <thead>
+            <tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Estado</th><th></th></tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><strong>@item.FullName</strong></td>
+                <td>@item.Email</td>
+                <td><span class="role-badge">@item.Role</span></td>
+                <td><span class="status-badge @(item.IsActive ? "active" : "inactive")">@(item.IsActive ? "Activo" : "Inactivo")</span></td>
+                <td class="actions-cell">
+                    <form asp-action="ToggleStatus" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="link-button">@(item.IsActive ? "Desactivar" : "Activar")</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
