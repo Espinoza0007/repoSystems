@@ -1,59 +1,64 @@
 # SystemPOS
 
-SystemPOS is the first commercial product in `repoSystems`: a modular point-of-sale and inventory platform for micro and small businesses, starting with minimarkets.
+SystemPOS es un sistema comercial para micro y pequeñas empresas construido como **una sola aplicación ASP.NET Core MVC**.
 
-## Product direction
+## Qué incluye actualmente
 
-The MVP focuses on a workflow that can be demonstrated and sold quickly:
+- Interfaz visual MVC al iniciar con F5 desde Visual Studio
+- Login con ASP.NET Core Identity
+- Roles `Administrator` y `Cashier`
+- Administración de usuarios
+- Activación y desactivación de usuarios
+- Dashboard inicial
+- Catálogo visual de productos
+- Creación y edición de productos
+- SQL Server mediante Entity Framework Core
+- Base local de desarrollo creada automáticamente
+- Diseño responsive para escritorio y móvil
 
-1. Company and branch setup
-2. Product catalog
-3. Inventory by branch
-4. Sales / POS transactions
-5. Automatic inventory movements
-6. Daily sales reporting
+## Abrir en Visual Studio
 
-The architecture is multi-company from the beginning so future vertical modules (food service, barber shops, services, billing) can reuse the same core.
-
-## Technology
-
-- ASP.NET Core / .NET 10
-- Entity Framework Core
-- SQL Server
-- REST API
-- Docker
-
-## Repository structure
+Abrir:
 
 ```text
-src/
-  SystemPOS.Domain/
-  SystemPOS.Application/
-  SystemPOS.Infrastructure/
-  SystemPOS.Api/
-database/
-  001_initial_schema.sql
-docker-compose.yml
+SystemPOS.sln
 ```
 
-## MVP status
+La solución contiene un solo proyecto:
 
-- [x] Initial repository structure
-- [x] Core domain model
-- [x] SQL Server initial schema
-- [ ] Product CRUD
-- [ ] Inventory operations
-- [ ] POS sale transaction
-- [ ] Authentication and roles
-- [ ] Angular frontend
-- [ ] Docker end-to-end validation
+```text
+SystemPOS.csproj
+```
 
-## Local database
+Al depurar con F5 se abrirá la aplicación web y, si no existe sesión, se mostrará el login.
 
-The repository includes `database/001_initial_schema.sql` and a Docker Compose definition for SQL Server.
+## Acceso inicial de desarrollo
 
-> Do not use the example development password in production. Configure secrets through environment variables or a secret manager.
+```text
+Usuario: admin@systempos.local
+Contraseña: Admin123!
+```
 
-## Commercial objective
+Este usuario se crea únicamente cuando el ambiente es `Development`. Cambiar estas credenciales antes de cualquier publicación real.
 
-Build one reusable platform and activate business-specific modules instead of maintaining separate products for each type of microenterprise.
+## Base de datos local
+
+Para facilitar el desarrollo desde Visual Studio en Windows se utiliza por defecto:
+
+```text
+(localdb)\MSSQLLocalDB
+Database=SystemPOS
+```
+
+La primera ejecución crea automáticamente la base y las tablas de Identity y del sistema.
+
+## Próximos módulos
+
+1. Empresas y sucursales
+2. Inventario y kardex
+3. Apertura y cierre de caja
+4. POS / carrito de venta
+5. Venta y descuento de inventario
+6. Ticket
+7. Compras y proveedores
+8. Reportes
