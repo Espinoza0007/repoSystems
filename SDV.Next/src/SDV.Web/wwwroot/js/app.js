@@ -1,4 +1,4 @@
-const apiBase = globalThis.SDV_API_URL ?? 'http://localhost:8080';
+const apiBase = globalThis.SDV_API_URL ?? 'https://localhost:7080';
 document.querySelector('#login-form').addEventListener('submit', async event => {
   event.preventDefault();
   const message = document.querySelector('#message');
@@ -11,4 +11,3 @@ document.querySelector('#login-form').addEventListener('submit', async event => 
     message.style.color = '#83e6ad'; message.textContent = `Bienvenido, ${session.user.displayName}`;
   } catch (error) { message.style.color = '#ff9b9b'; message.textContent = error.message; }
 });
-
