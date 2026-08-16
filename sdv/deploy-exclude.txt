@@ -1,0 +1,11 @@
+.git/
+.github/
+node_modules/
+vendor/
+tests/
+storage/
+*.log
+.env
+# For CodeIgniter 3: skip environment-specific files if you keep them server-side
+application/config/production/*
+application/config/development/*

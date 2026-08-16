@@ -1,0 +1,7 @@
+application/logs/
+application/cache/
+application/sessions/*
+!application/sessions/.keep
+
+.htaccess
+php-error.log

@@ -1,0 +1,28 @@
+html {
+	font-size: 12px
+}
+.Bienvenidos {
+	background: url(../Images/Fondo-container.jpeg);
+	background-size: cover;
+	height: 100vh;
+	overflow: hidden;
+}
+.Encabezado {
+	    background: #191d3869;
+	    font-color: #fff;
+    }
+
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+    margin-top: 275px;
+    font-size: 25px;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+    margin-left: 100px;
+}
+
+

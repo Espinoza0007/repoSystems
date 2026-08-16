@@ -1,0 +1,252 @@
+body{
+  overscroll-behavior: contain;
+}
+
+.btngr_azul_oscuro_m{
+    background-color: #7961E1;
+    color:#fff;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 96%;
+    height: 105px;
+    font-size: 18px;
+    border:1px solid #5F40DB;
+    border-bottom: 4px solid #5F40DB;
+    border-right: 4px solid #5F40DB;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btngr_anaranjado_m{
+    background-color: #E18136;
+    color:#fff;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 96%;
+    height: 105px;
+    font-size: 18px;
+    border:1px solid #CA671A;
+    border-bottom: 4px solid #CA671A;
+    border-right: 4px solid #CA671A;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btngr_azul_m{
+    background-color: #41A2EC;
+    color:#fff;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 96%;
+    height: 105px;
+    font-size: 18px;
+    border:1px solid #247ABB;
+    border-bottom: 4px solid #247ABB;
+    border-right: 4px solid #247ABB;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.btngr_amarillopatito{
+    background-color: #F0C338;
+    color:#fff;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 96%;
+    height: 105px;
+    font-size: 18px;
+    border:1px solid #C89D1B;
+    border-bottom: 4px solid #C89D1B;
+    border-right: 4px solid #C89D1B;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btngr_verde{
+    background-color: #4FE175;
+    color:#fff;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 96%;
+    height: 105px;
+    font-size: 18px;
+    border:1px solid #25B149;
+    border-bottom: 4px solid #25B149;
+    border-right: 4px solid #25B149;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btngr_nayib{
+    background-color: #465966;
+    color:#fff;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 96%;
+    height: 105px;
+    font-size: 18px;
+    border:1px solid #323639;
+    border-bottom: 4px solid #323639;
+    border-right: 4px solid #323639;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btngr_rojo{
+    background-color: #E54C50;
+    color:#fff;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 96%;
+    height: 105px;
+    font-size: 18px;
+    border:1px solid #B4262A;
+    border-bottom: 4px solid #B4262A;
+    border-right: 4px solid #B4262A;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btngr_celeste{
+    background-color: #1ABC9C;
+    color:#fff;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 96%;
+    height: 105px;
+    font-size: 18px;
+    border:1px solid #228E78;
+    border-bottom: 4px solid #228E78;
+    border-right: 4px solid #228E78;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btngr_anaranjado{
+  background-color: #FF994C;
+  color:#fff;
+  font-weight: bold;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+  width: 96%;
+  height: 105px;
+  font-size: 18px;
+  border:1px solid #F67E24;
+  border-bottom: 4px solid #F67E24;
+  border-right: 4px solid #F67E24;
+  padding-bottom: 5px;
+  margin-bottom: 7px;
+  border-radius: 3px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#titulo_menu{
+    /*font-weight: bold;*/
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    font-size: 25px;
+    margin: 0 auto;
+}
+  #principal_menu > #sincronizando_loading{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  width: 90%;
+}
+#nube{
+  color: #41494B;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.7);
+}
+#tuerca{
+  color: #41494B;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.7);
+}
+#db{
+  color: #41494B;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.7);
+}
+
+#titulo_sincro{
+  font-size: 1.2rem;
+  color: #4F5458;
+  font-weight: 700;
+  /*text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);*/
+}
+
+.slc_ruta{
+    background-color: #41A2EC;
+    /*background-color: #3d8bfd;*/
+    color:#fff;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 96%;
+    margin: 7px auto;
+    height: 100px;
+    font-size: 15px;
+    border:1 px solid #087990;
+    padding-bottom: 5px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+
+}
+
+.btngr_venta{
+  background-color: #063761;
+  color:#fff;
+  font-weight: bold;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+  width: 96%;
+  height: 105px;
+  font-size: 18px;
+  border:1px solid #042744;
+  border-bottom: 4px solid #042744;
+  border-right: 4px solid #042744;
+  padding-bottom: 5px;
+  margin-bottom: 7px;
+  border-radius: 3px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btngr_mercado{
+  background-color: #B8BEC2;
+  color:#fff;
+  font-weight: bold;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+  width: 96%;
+  height: 105px;
+  font-size: 18px;
+  border:1px solid #999B9D;
+  border-bottom: 4px solid #999B9D;
+  border-right: 4px solid #999B9D;
+  padding-bottom: 5px;
+  margin-bottom: 7px;
+  border-radius: 3px;
+  outline: none !important;
+  box-shadow: none !important;
+}
