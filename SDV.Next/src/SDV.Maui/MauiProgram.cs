@@ -1,3 +1,5 @@
+using Microsoft.Maui.Hosting;
+
 namespace SDV.Maui;
 public static class MauiProgram
 {
@@ -8,4 +10,3 @@ public static class MauiProgram
         return builder.Build();
     }
 }
-
