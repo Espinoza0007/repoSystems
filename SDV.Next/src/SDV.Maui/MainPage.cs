@@ -1,3 +1,5 @@
+using Microsoft.Maui.Controls;
+
 namespace SDV.Maui;
 
 public sealed class MainPage : ContentPage
@@ -8,4 +10,3 @@ public sealed class MainPage : ContentPage
         Content = new WebView { Source = "wwwroot/index.html", HorizontalOptions = LayoutOptions.Fill, VerticalOptions = LayoutOptions.Fill };
     }
 }
-
