@@ -5,7 +5,7 @@ Modernización progresiva de SDV hacia .NET con una API ASP.NET Core, acceso a d
 ## Requisitos
 
 - Visual Studio 2022 con workloads ASP.NET y .NET MAUI
-- SDK .NET 8
+- SDK .NET 10
 - Docker Desktop
 - SQL Server accesible desde la API
 
@@ -22,4 +22,3 @@ La API queda en `http://localhost:8080`, el portal en `http://localhost:8081` y 
 ## Seguridad
 
 Las credenciales nunca se guardan en Git. Configure `ConnectionStrings__Sdv`, `Jwt__Key`, `Jwt__Issuer` y `Jwt__Audience` mediante variables de entorno o secretos de desarrollo.
-
