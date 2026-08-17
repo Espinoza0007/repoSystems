@@ -19,7 +19,7 @@ public sealed class JwtTokenService(IOptions<JwtOptions> options) : ITokenServic
         claims.AddRange(user.Permissions.Select(permission => new Claim("permission", permission)));
         var credentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.Key)), SecurityAlgorithms.HmacSha256);
         var token = new JwtSecurityToken(settings.Issuer, settings.Audience, claims, expires: expires.UtcDateTime, signingCredentials: credentials);
-        return new LoginResponse(new JwtSecurityTokenHandler().WriteToken(token), expires, new UserSummary(user.Id, user.Username, user.DisplayName, user.Permissions));
+        var context = new UserContext(user.RouteId, user.RouteName, user.ChannelId, user.ChannelName, user.DistributorId, user.DistributorName, user.DivisionId, user.CountryId, user.CountryName);
+        return new LoginResponse(new JwtSecurityTokenHandler().WriteToken(token), expires, new UserSummary(user.Id, user.Username, user.DisplayName, user.RoleName, user.MustChangePassword, user.Permissions, context));
     }
 }
-
