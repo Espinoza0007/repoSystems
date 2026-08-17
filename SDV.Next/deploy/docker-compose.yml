@@ -5,7 +5,11 @@ services:
       dockerfile: src/SDV.Api/Dockerfile
     environment:
       ASPNETCORE_URLS: http://+:8080
-      ConnectionStrings__Sdv: ${SDV_CONNECTION_STRING}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT:-3306}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
       Jwt__Key: ${SDV_JWT_KEY}
       Jwt__Issuer: sdv-api
       Jwt__Audience: sdv-clients
@@ -23,4 +27,3 @@ services:
       ASPNETCORE_URLS: http://+:8080
     ports: ["8081:8080"]
     depends_on: [api]
-
