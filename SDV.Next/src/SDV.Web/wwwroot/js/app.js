@@ -1,13 +1,29 @@
 const apiBase = globalThis.SDV_API_URL ?? 'https://localhost:7080';
-document.querySelector('#login-form').addEventListener('submit', async event => {
-  event.preventDefault();
-  const message = document.querySelector('#message');
-  message.textContent = '';
-  try {
-    const response = await fetch(`${apiBase}/api/v1/auth/login`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ username:document.querySelector('#username').value, password:document.querySelector('#password').value }) });
-    if (!response.ok) throw new Error('Usuario o contraseña incorrectos.');
-    const session = await response.json();
-    sessionStorage.setItem('sdv.accessToken', session.accessToken);
-    message.style.color = '#83e6ad'; message.textContent = `Bienvenido, ${session.user.displayName}`;
-  } catch (error) { message.style.color = '#ff9b9b'; message.textContent = error.message; }
-});
+const sessionKey = 'sdv.session';
+const menuItems = [
+  {id:'home',label:'Inicio',icon:'⌂',permission:'menu.view',description:'Resumen general de su operación.'},
+  {id:'clients',label:'Clientes',icon:'♙',permission:'clients.view',description:'Consulta y administración de clientes.'},
+  {id:'orders',label:'Pedidos',icon:'▣',permission:'orders.view',description:'Registro, consulta y seguimiento de pedidos.'},
+  {id:'routes',label:'Rutas',icon:'⌖',permission:'routes.view',description:'Planificación y consulta de rutas.'},
+  {id:'market',label:'Mercado',icon:'◎',permission:'market.view',description:'Información comercial y cobertura de mercado.'},
+  {id:'sales',label:'Ventas',icon:'↗',permission:'sales.view',description:'Indicadores y movimientos de ventas.'},
+  {id:'inventory',label:'Inventario',icon:'▦',permission:'inventory.view',description:'Existencias y movimientos de productos.'},
+  {id:'claims',label:'Reclamos',icon:'!',permission:'claims.view',description:'Registro y seguimiento de reclamos.'},
+  {id:'reports',label:'Reportes',icon:'▤',permission:'reports.view',description:'Consultas y exportación de reportes.'},
+  {id:'users',label:'Usuarios',icon:'♚',permission:'users.view',description:'Administración de usuarios y accesos.'}
+];
+const loginView=document.querySelector('#login-view'),appView=document.querySelector('#app-view'),content=document.querySelector('#content'),menu=document.querySelector('#main-menu');
+document.querySelector('#login-form').addEventListener('submit',login);
+document.querySelector('#logout-button').addEventListener('click',()=>logout());
+document.querySelector('#menu-toggle').addEventListener('click',()=>document.querySelector('#sidebar').classList.toggle('open'));
+restoreSession();
+
+async function login(event){event.preventDefault();const message=document.querySelector('#message'),submit=event.currentTarget.querySelector('button');message.textContent='';submit.disabled=true;submit.textContent='Ingresando…';try{const response=await fetch(`${apiBase}/api/v1/auth/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:document.querySelector('#username').value,password:document.querySelector('#password').value})});if(!response.ok)throw new Error(response.status===429?'Demasiados intentos. Espere un minuto.':'Usuario o contraseña incorrectos.');const session=await response.json();sessionStorage.setItem(sessionKey,JSON.stringify(session));showApplication(session)}catch(error){message.textContent=error instanceof TypeError?'No fue posible conectar con la API.':error.message}finally{submit.disabled=false;submit.textContent='Ingresar'}}
+function restoreSession(){try{const session=JSON.parse(sessionStorage.getItem(sessionKey));if(!session?.accessToken||!session?.user||new Date(session.expiresAt)<=new Date())return logout(false);showApplication(session)}catch{logout(false)}}
+function showApplication(session){loginView.hidden=true;appView.hidden=false;document.querySelector('#user-name').textContent=session.user.displayName;document.querySelector('#user-role').textContent=session.user.role;document.querySelector('#user-initials').textContent=initials(session.user.displayName);document.querySelector('#route-context').textContent=`${session.user.context.routeName} · ${session.user.context.distributorName}`;renderMenu(session.user.permissions??[]);renderHome(session.user)}
+function renderMenu(permissions){const allowed=new Set(permissions);menu.replaceChildren();menuItems.filter(item=>allowed.has(item.permission)).forEach(item=>{const button=document.createElement('button');button.type='button';button.dataset.page=item.id;button.innerHTML=`<span class="menu-icon" aria-hidden="true">${item.icon}</span><span>${item.label}</span>`;button.addEventListener('click',()=>openModule(item));menu.append(button)});menu.querySelector('[data-page="home"]')?.classList.add('active')}
+function openModule(item){menu.querySelectorAll('button').forEach(button=>button.classList.toggle('active',button.dataset.page===item.id));document.querySelector('#page-title').textContent=item.label;document.querySelector('#sidebar').classList.remove('open');content.innerHTML=`<section class="module-header"><div><p class="eyebrow">Módulo</p><h1>${item.label}</h1><p>${item.description}</p></div></section><section class="empty-state"><span class="empty-icon">${item.icon}</span><h2>${item.label}</h2><p>La estructura y el control de acceso están listos. La funcionalidad heredada de este módulo será incorporada en la siguiente etapa.</p></section>`;content.focus()}
+function renderHome(user){document.querySelector('#page-title').textContent='Inicio';const available=menuItems.filter(item=>user.permissions.includes(item.permission)&&item.id!=='home');content.innerHTML=`<section class="welcome"><div><p class="eyebrow">Panel principal</p><h1>Bienvenido, ${escapeHtml(user.displayName)}</h1><p>Esta es la información asignada a su sesión.</p></div><span class="status-badge">● Sesión activa</span></section><section class="summary-grid"><article class="summary-card"><small>Ruta</small><strong>${escapeHtml(user.context.routeName)}</strong><span>ID ${user.context.routeId}</span></article><article class="summary-card"><small>Canal</small><strong>${escapeHtml(user.context.channelName)}</strong><span>ID ${user.context.channelId}</span></article><article class="summary-card"><small>Distribuidora</small><strong>${escapeHtml(user.context.distributorName)}</strong><span>${escapeHtml(user.context.countryName)}</span></article><article class="summary-card"><small>Módulos disponibles</small><strong>${available.length}</strong><span>Según su perfil</span></article></section><section class="quick-section"><h2>Accesos disponibles</h2><div class="quick-grid">${available.map(item=>`<button class="quick-card" type="button" data-module="${item.id}"><span>${item.icon}</span><div><strong>${item.label}</strong><small>${item.description}</small></div><b>→</b></button>`).join('')}</div></section>`;content.querySelectorAll('[data-module]').forEach(button=>button.addEventListener('click',()=>openModule(menuItems.find(item=>item.id===button.dataset.module))))}
+function logout(showLogin=true){sessionStorage.removeItem(sessionKey);appView.hidden=true;loginView.hidden=!showLogin;document.querySelector('#login-form').reset();document.querySelector('#message').textContent='';if(showLogin)document.querySelector('#username').focus()}
+function initials(name){return name.split(/\s+/).filter(Boolean).slice(0,2).map(value=>value[0]).join('').toUpperCase()}
+function escapeHtml(value){const element=document.createElement('span');element.textContent=value??'';return element.innerHTML}
