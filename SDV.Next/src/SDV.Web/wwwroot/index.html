@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SDV Next</title><link rel="stylesheet" href="css/site.css"><link rel="stylesheet" href="css/modules.css"></head>
+<body>
+  <main id="login-view" class="login"><section class="card"><div class="brand-mark">S</div><h1>SDV Next</h1><p>Acceso seguro al sistema de distribución y ventas.</p><form id="login-form"><label>Usuario<input id="username" autocomplete="username" required maxlength="100"></label><label>Contraseña<input id="password" type="password" autocomplete="current-password" required maxlength="256"></label><button type="submit">Ingresar</button><p id="message" role="alert"></p></form></section></main>
+  <div id="app-view" class="app-shell" hidden>
+    <aside id="sidebar" class="sidebar"><div class="brand"><span class="brand-mark small">S</span><span>SDV Next</span></div><nav id="main-menu" class="main-menu" aria-label="Menú principal"></nav><button id="logout-button" class="logout-button" type="button"><span aria-hidden="true">↪</span> Cerrar sesión</button></aside>
+    <div class="workspace"><header class="topbar"><button id="menu-toggle" class="icon-button" type="button" aria-label="Mostrar menú">☰</button><div><strong id="page-title">Inicio</strong><span id="route-context" class="route-context"></span></div><div class="user-box"><span id="user-initials" class="avatar"></span><div><strong id="user-name"></strong><small id="user-role"></small></div></div></header><main id="content" class="content" tabindex="-1"></main></div>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body></html>

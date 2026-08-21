@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDV.Domain", "src\SDV.Domain\SDV.Domain.csproj", "{E7C10B31-2FA7-4E19-AF16-709FC9665211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDV.Contracts", "src\SDV.Contracts\SDV.Contracts.csproj", "{963C2DE2-A47C-4C78-843D-760C17B854BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDV.Application", "src\SDV.Application\SDV.Application.csproj", "{22E43170-A0B1-47BF-A6D2-A4DD5D474585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDV.Infrastructure", "src\SDV.Infrastructure\SDV.Infrastructure.csproj", "{764386F8-6213-40C8-9783-9A77F465D2DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDV.Api", "src\SDV.Api\SDV.Api.csproj", "{5B2A0A90-D031-48A2-80D5-B68B21DA3F0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDV.Web", "src\SDV.Web\SDV.Web.csproj", "{83E8B57D-31CC-4ECA-BA8D-644D90CF0B29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDV.UnitTests", "tests\SDV.UnitTests\SDV.UnitTests.csproj", "{D2D30BD8-299B-44E5-A3DD-10529839873D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDV.Maui", "src\SDV.Maui\SDV.Maui.csproj", "{F5E3FF4F-4B35-4E44-91FC-FAFE3C4AD811}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7C10B31-2FA7-4E19-AF16-709FC9665211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7C10B31-2FA7-4E19-AF16-709FC9665211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963C2DE2-A47C-4C78-843D-760C17B854BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{963C2DE2-A47C-4C78-843D-760C17B854BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22E43170-A0B1-47BF-A6D2-A4DD5D474585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22E43170-A0B1-47BF-A6D2-A4DD5D474585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{764386F8-6213-40C8-9783-9A77F465D2DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{764386F8-6213-40C8-9783-9A77F465D2DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B2A0A90-D031-48A2-80D5-B68B21DA3F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B2A0A90-D031-48A2-80D5-B68B21DA3F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83E8B57D-31CC-4ECA-BA8D-644D90CF0B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83E8B57D-31CC-4ECA-BA8D-644D90CF0B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D30BD8-299B-44E5-A3DD-10529839873D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D30BD8-299B-44E5-A3DD-10529839873D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E3FF4F-4B35-4E44-91FC-FAFE3C4AD811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E3FF4F-4B35-4E44-91FC-FAFE3C4AD811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal
+
